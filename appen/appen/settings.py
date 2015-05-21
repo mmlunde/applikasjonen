@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'appen',
     'theme',
     'site_details',
+    'users',
 )
 
 MIDDLEWARE_CLASSES = (

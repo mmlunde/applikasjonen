@@ -1,7 +1,7 @@
-from django.conf.urls import include, patterns, url
+from django.conf.urls import patterns, url
 
-from theme import views
+from users import views
 
 urlpatterns = patterns('',
-    url(r'^$', views.frontpage, name='frontpage'),
+    url(r'^login$', views.user_login, name='user_login'),
 )
