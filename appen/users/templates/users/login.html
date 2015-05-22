@@ -1,1 +1,19 @@
-<p>Helloo</p>
+{% extends 'users/base.html' %}
+{% block container %}
+	<form class="signin-form" method="POST" action="[% url 'user_login' %}">
+		<!-- For pretection of the external url in using 'unsafe' POST method.--> 
+		{% csrf_token %}
+
+		<h2 class="signin-heading">Please sign in</h2>
+
+		{% if login_failed %}
+		<div class="invalid-login" role="alert"> Login failed. Please try again.</div>
+		{% endif %}
+
+		<label for="inputUsername" class="sr-only">Username</label>
+		<input type="text" name="username" class="control" placeholder="Username" required autofocus>
+		<label for="inputPassword" class="sr-only">Password</label>
+		<input type="password" name="password" class="control" placeholder="Password" required>
+		<button class="button" type="submit">Sign in</button>
+	</form>
+{% endblock %}	
