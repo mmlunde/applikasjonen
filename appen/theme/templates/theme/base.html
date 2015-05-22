@@ -1,4 +1,29 @@
+{% extends 'theme/site_base.html' %}
 {% block body %}
 
-    
+<div class="container-fluid">
+	{% user.is_anonymous %}
+	<nav class="navbar navbar-inverse">
+	  <ul class="nav nav-pills">
+		  <li role="presentation" class="active"><a href="{% url 'frontpage' %}">Home</a></li>
+		  <li role="presentation"><a href="#">Register</a></li>
+		  <li role="presentation"><a href="{% url 'user_login' %}">
+		  	Sign in</a></li>
+		  <p class="navbar-text">You're not signed in.</p>
+	  </ul>
+	</nav>
+
+	{% else %}
+	<nav class="navbar navbar-inverse">
+	  <ul class="nav nav-pills">
+		  <li role="presentation" class="active"><a href="{% url 'frontpage' %}">Home</a></li>
+		  <li role="presentation"><a href="#">Account Settings</a></li>
+		  <li role="presentation"><a href="{% url 'user_logout' %}">
+		  	Sign out</a></li>
+		  <p class="navbar-text">Signed in as {{ user.username }}</p>
+	  </ul>
+	</nav>
+	{% endif %}
+</div>	  
+
 {% endblock %}
