@@ -1,4 +1,4 @@
-.signing-form {
+.signin-form {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -6,10 +6,10 @@
 	font-size: 14px;
 }
 
-.control{
+.invalid-login {
 	color: red;
 }
 
-.signing-heading {
+.signig-heading {
 	font-size: 18px;
 }
