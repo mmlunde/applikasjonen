@@ -1,0 +1,30 @@
+{% extends 'users/base.html' %}
+{% block container %}
+<h1>Become a user today!</h1>
+{% if user_saved %}
+	<div class="success-alert">Registration was successful.</div>
+{% endif %}
+<form method="POST" actions="{% url 'user_register' %}">{% csrf_token %}
+		<div class="reg-form">
+			<label for="inputFName">First Name</label>
+			<input type="text" class="control" name="firstname" id="inputFName" placeholder="First Name">
+		</div>
+		<div class="reg-form">
+			<label for="inputLName">Last Name</label>
+			<input type="text" class="control" name="lastname" id="inputLName" placeholder="Last Name">
+		</div>
+		<div class="reg-form">
+			<label for="inputEmail">Email</label>
+			<input type="email" name="email" id="inputEmail" class="control" placeholder="example@email.com">
+		</div>
+		<div class="reg-form">
+			<label for="inputUsername">Username</label>
+			<input type="text" name="username" id="inputUsername" class="control" placeholder="Username">
+		</div>
+		<div class="reg-form">
+			<label for="inputPassword">Password</label>
+			<input type="password" name="password" id="inputPassword" class="control" placeholder="Password">
+		</div>
+	<button type="submit" class="button">Register</button>
+</form>
+{% endblock %}
