@@ -25,8 +25,8 @@ def user_register(request):
 	context = {}
 	if request.method == "POST":
 		user = User()
-		user.fName = request.POST.get('firstname')
-		user.lName = request.POST.get('lastname')
+		user.first_name = request.POST.get('firstname')
+		user.last_name = request.POST.get('lastname')
 		user.email = request.POST.get('email')
 		user.username = request.POST.get('username')	
 		user.set_password(request.POST.get('password'))

@@ -2,7 +2,7 @@
 {% block container %}
 <h1>Your account settings</h1>
 	<ol>
-		<li>Your Name: {{ user.firstname }}</li>
+		<li>Your Name: {{ user.first_name }} {{ user.last_name }}</li>
 		<li>Your email: {{ user.email }}</li>
 		<li>Your username: {{ user.username }}</li>
 	<ol>
