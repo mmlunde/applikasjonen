@@ -1,0 +1,10 @@
+{% extends 'site_details/base.html' %}
+{% block container %}
+<h1>Your account settings</h1>
+	<ol>
+		<li>Your Name: {{ user.firstname }}</li>
+		<li>Your email: {{ user.email }}</li>
+		<li>Your username: {{ user.username }}</li>
+	<ol>
+
+{% endblock %}
