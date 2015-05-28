@@ -9,3 +9,16 @@ class User(models.Model):
 
 	def __unicode__(self):
 		return u'%s (%s)' % (self.firstname, self.lastname)
+
+
+class CommentField(models.Model):
+	user = models.ForeignKey(User, related_name='comments')
+	comments = models.TextField()
+	comment_by = models.ForeignKey(User, related_name="written_comments")
+	comment_datetime = models.DateTimeField()
+
+	def __unicode__(self):
+		return u'%s' % self.comments
+
+	#class Meta: 
+		#ordering = ['-pub_date']
