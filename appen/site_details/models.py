@@ -13,12 +13,12 @@ class User(models.Model):
 
 class CommentField(models.Model):
 	user = models.ForeignKey(User, related_name='comments')
-	comments = models.TextField()
+	comment = models.TextField()
 	comment_by = models.ForeignKey(User, related_name="written_comments")
 	comment_datetime = models.DateTimeField()
 
 	def __unicode__(self):
-		return u'%s' % self.comments
+		return u'%s' % self.comment
 
 	#class Meta: 
 		#ordering = ['-pub_date']

@@ -5,6 +5,23 @@
 	<h1> Welcome to Appen!</h1>	
 	<p> -Feel free to comment.</p>
 </div>
+<div class="row">
+	<div class="col-sm-12">
+		<h2>Comments</h2>
+		<table class="table">
+			{% for comment in comments %}
+			<tr>
+				<td>{{ comment.comment }}</td>
+				<td>{{ comment.comment_by }}</td>
+			</tr>
+			{% empty %}
+			<tr>
+				<td>Sorry, no comments in this list</td>
+			</tr>	
+			{% endfor %}
+		</table>
+	</div>
+</div>		
 
 <div class="row">
 	<div class="col-sm-12">
@@ -29,5 +46,18 @@
 	<h1> Welcome to Appen</h1>	
 	<p> -Sign in to comment.</p>
 </div>
+<div class="row">
+	<div class="col-sm-12">
+		<h2>omments</h2>
+		<table class="table">
+			{% for comment in comments %}
+			<tr>
+				<td>{{ comment.comment }}</td>
+				<td>{{ comment.comment_by }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+</div>	
 {% endif %}
 {% endblock %}
