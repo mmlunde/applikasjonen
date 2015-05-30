@@ -48,12 +48,16 @@
 </div>
 <div class="row">
 	<div class="col-sm-12">
-		<h2>omments</h2>
+		<h2>Comments</h2>
 		<table class="table">
 			{% for comment in comments %}
 			<tr>
 				<td>{{ comment.comment }}</td>
 				<td>{{ comment.comment_by }}</td>
+			</tr>
+			{% empty %}
+			<tr>
+				<td>Sorry, no comments in this list</td>
 			</tr>
 			{% endfor %}
 		</table>
