@@ -4,4 +4,3 @@ from django.shortcuts import render
 def account_settings(request):
 	return render(request, 'site_details/account_settings.html')
 
-
