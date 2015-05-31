@@ -18,14 +18,14 @@ def frontpage(request):
 		new_comment.save()
 
 	comments = Comment.objects.all()
-	page_number = request.GET.get('page')
+	page_number = request.GET.get('page', 1)
 	paginator = Paginator(comments, 5)
 	try: 
-		comment = paginator.page(page_number)
+		comments = paginator.page(page_number)
 	except PageNotAnInteger:
-		comment = paginator.page(1)
+		comments = paginator.page(1)
 	except EmptyPage:
-		comment = paginator.page(paginator.num_pages)
+		comments = paginator.page(paginator.num_pages)
 
 	context = {
 		#'user': user, 

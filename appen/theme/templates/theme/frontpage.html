@@ -5,63 +5,94 @@
 	<h1> Welcome to Appen!</h1>	
 	<p> -Feel free to comment.</p>
 </div>
-<div class="row">
-	<div class="col-sm-12">
-		<h2>Comments</h2>
-		<table class="table">
-			{% for comment in comments %}
-			<tr>
-				<td>{{ comment.comment }}</td>
-				<td>{{ comment.comment_by }}</td>
-			</tr>
-			{% empty %}
-			<tr>
-				<td>Sorry, no comments in this list</td>
-			</tr>	
-			{% endfor %}
-		</table>
-	</div>
-</div>		
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2>Comments</h2>
+			<table class="table">
+				{% for comment in comments %}
+				<tr>
+					<td>{{ comment.comment }} </td>
+					<td>Comment by: {{ comment.comment_by }}</td>
+					<td>{{ comment.comment_datetime}}</td>
+					<td><a href="#"> More details</a></td>
+				</tr>
+				{% empty %}
+				<tr>
+					<td>Sorry, no comments in this list</td>
+				</tr>	
+				{% endfor %}
+			</table>
+			<div class="container">
+				{% if comments.has_previous %}
+					<a href="?page={{ comments.previous_page_number }}">Previous</a>
+				{% endif %}
 
-<div class="row">
-	<div class="col-sm-12">
-		<h2>Add a comment</h2>
-		<form class="form-horizontal" method="POST">
-			{% csrf_token %}
-			<div class="form-group">
-				<div class="col-sm-12">
-					<textarea class="form-control" rows="5" name="new_comment"></textarea>
-				</div>
+				| {{ comments.number }} |
+
+				{% if comments.has_next %}
+					<a href="?page={{ comments.next_page_number }}">Next</a>
+				{% endif %}
 			</div>
-			<div class="form-group">
-				<div class="col-sm-12">
-					<button type="submit" class="button">Save Comment</button>
+		</div>
+	</div>		
+</div>	
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2>Add a comment</h2>
+			<form class="form-horizontal" method="POST">
+				{% csrf_token %}
+				<div class="form-group">
+					<div class="col-sm-12">
+						<textarea class="form-control" rows="5" name="new_comment"></textarea>
+					</div>
 				</div>
-			</div>	
-		</form>
-	</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<button type="submit" class="button">Save Comment</button>
+					</div>
+				</div>	
+			</form>
+		</div>
+	</div>	
 </div>	
 {% else %}	
 <div class="container">	
 	<h1> Welcome to Appen</h1>	
 	<p> -Sign in to comment.</p>
 </div>
-<div class="row">
-	<div class="col-sm-12">
-		<h2>Comments</h2>
-		<table class="table">
-			{% for comment in comments %}
-			<tr>
-				<td>{{ comment.comment }}</td>
-				<td>{{ comment.comment_by }}</td>
-			</tr>
-			{% empty %}
-			<tr>
-				<td>Sorry, no comments in this list</td>
-			</tr>
-			{% endfor %}
-		</table>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2>Comments</h2>
+			<table class="table">
+				{% for comment in comments %}
+				<tr>
+					<td>{{ comment.comment }}</td>
+					<td>Comment by: {{ comment.comment_by }}</td>
+					<td>{{ comment.comment_datetime}}</td>
+					<td><a href="#"> More details</a></td>
+				</tr>
+				{% empty %}
+				<tr>
+					<td>Sorry, no comments in this list</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
 	</div>
+</div>	
+<div class="container">
+	{% if comments.has_previous %}
+		<a href="?page={{ comments.previous_page_number }}">Previous</a>
+	{% endif %}
+
+	| {{ comments.number }} |
+
+	{% if comments.has_next %}
+		<a href="?page={{ comments.next_page_number }}">Next</a>
+	{% endif %}
 </div>	
 {% endif %}
 {% endblock %}
