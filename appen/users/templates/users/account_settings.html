@@ -1,0 +1,37 @@
+{% extends 'users/base.html' %}
+{% block container %}
+{% if user.is_anonymous %}
+	<p>You have to be signed in to see this page. Back to <a href="{% url 'frontpage' %}">Home</a></p>
+{% else %}
+{% if user_saved %}
+	<div class="alert alert-success" role="alert">User info has been updated.</div>
+{% endif %}
+<div class="container">
+<h1>Your account settings</h1>
+	<ul>
+		<li>Your Name: {{ user.first_name }} {{ user.last_name }}</li>
+		<li>Your email: {{ user.email }}</li>
+		<li>Your username: {{ user.username }}</li>
+	<ul>
+</div>		
+<div class="container">
+	<form method="POST" action="">{% csrf_token %}
+		<div class="change-form">
+			<div>
+				<label for="changeFname">Change Firstname:</label>	
+				<input type="text" class="control" value="{{ user.first_name }}" name="firstname_change" id="changeFname" placeholder="Firstname">
+			</div>
+				<label for="changeLname">Change Lastname:</label>	
+				<input type="text" class="control" value="{{ user.last_name }}" name="lastname_change" id="changeLname" placeholder="Lastname">
+			<div>
+				<label for="changeEmail">Change Email:</label>	
+				<input type="text" class="control" value="{{ user.email }}" name="email_change" id="changeEmail" placeholder="example@email.com">
+			</div>
+			<div>
+				<button type="submit" class="button">Change</button>
+			</div>
+		</div>	
+	</form>	
+</div>
+{% endif %}
+{% endblock %}
