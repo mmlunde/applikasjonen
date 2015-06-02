@@ -21,24 +21,6 @@ def user_logout(request):
 	logout(request)
 	return redirect('frontpage')
 
-def user_register(request):
-	context = {}
-	if request.method == "POST":
-		user = User()
-		user.first_name = request.POST.get('firstname')
-		user.last_name = request.POST.get('lastname')
-		user.email = request.POST.get('email')
-		user.username = request.POST.get('username')
-		if User.objects.filter(email=user.email).exists():
-			context['email_taken'] = True
-		elif User.objects.filter(username=user.username).exists():
-			context['username_taken'] = True
-		return render(request, 'users/register.html', context)	
-		user.set_password(request.POST.get('password'))
-		user.save()
-		context['user_saved'] = True
-	return render(request, 'users/register.html', context)
-
 def change_user_info(request):
 	context = {}
 	if request.method == "POST":
@@ -52,3 +34,22 @@ def change_user_info(request):
 		user.save()
 		context['user_saved'] = True
 	return render(request, 'users/account_settings.html', context)
+
+def user_register(request):
+	context = {}
+	if request.method == "POST":
+		user = User()
+		user.first_name = request.POST.get('firstname')
+		user.last_name = request.POST.get('lastname')
+		user.email = request.POST.get('email')
+		user.username = request.POST.get('username')	
+		user.set_password(request.POST.get('password'))
+		if User.objects.filter(username=user.username).exists():
+			context['username_taken'] = True
+		elif User.objects.filter(email=user.email).exists():
+			context['email_taken'] = True	
+		else:	
+			user.save()
+			context['user_saved'] = True
+	return render(request, 'users/register.html', context)
+

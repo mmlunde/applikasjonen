@@ -3,12 +3,10 @@
 <h1>Become a user today!</h1>
 {% if user_saved %}
 	<div class="alert alert-success" role="alert">Registration was successful.</div>
-{% endif %}
-{% if email_taken %}
-	<div class="alert alert-danger" role="alert">Email already in use.</div>
-{% endif %}
-{% if username_taken %}
+{% elif username_taken %}
 	<div class="alert alert-danger" role="alert">Username already in use.</div>
+{% elif email_taken %}
+	<div class="alert alert-danger" role="alert">Email already in use.</div>
 {% endif %}
 <form method="POST" actions="{% url 'user_register' %}">{% csrf_token %}
 		<div class="reg-form">
