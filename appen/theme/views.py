@@ -8,6 +8,7 @@ from theme import models
 from theme.models import Comment
 
 # Create your views here.
+
 def frontpage(request):
 	if request.method == "POST":
 		new_comment_text = request.POST.get('new_comment')
@@ -16,6 +17,7 @@ def frontpage(request):
 		new_comment.comment_by = request.user
 		new_comment.comment_datetime = timezone.now()
 		new_comment.save()
+
 
 	comments = Comment.objects.all()
 	page_number = request.GET.get('page', 1)
@@ -33,3 +35,18 @@ def frontpage(request):
 	}
 				
 	return render(request, 'theme/frontpage.html', context)
+
+def add_likes (request, user_id, comment_id): 
+	comment = Comment.objects.get(pk=comment_id)
+	comment.likes = comment.likes + 1
+	comment.save()
+	data = {'comment_updated': comment.likes}
+	return JsonResponse(data)
+
+
+def comment_details(request, comment_id):
+	comments = Comment.objects.all().filter(id=comment_id)
+	context = { 
+		'comments': comments,
+	}
+	return render(request, 'theme/comment_detail.html', context)

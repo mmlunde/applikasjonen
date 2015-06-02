@@ -1,0 +1,19 @@
+{% extends 'theme/base.html' %}
+{% block extra_head %}
+	<meta property ="og:title" content="New comment" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="appen.com" />
+	<meta property="og:description" content ="This is the comment" />
+	<meta property="og:url" content="https://appen.com/comments_details" />
+	<meta property="og:image" content="http://appen.com/image/comments.png" />
+	<meta property="og:image:secure_url" content="http://appen.com/image/comments.png" />
+{% endblock %}
+{% block container %}
+{% for comment in comments %}
+<div class="container">
+	<p>{{ comment.comment}}</p>
+	<p>By: {{ comment.comment_by }}, {{ comment.comment_datetime }}</p>
+	<p>Likes: {{ comment.likes }}</p>
+</div>
+{% endfor %}
+{% endblock %}
