@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+	//The on-click function event for the likes-button with ajax 
+	//so that the page doesn't reload everytime the likes-button is clicked
 	$(".add-comment-link").click(function(event) {
 		event.preventDefault();
 		var comment_id = $(this).data("commentid");

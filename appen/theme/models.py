@@ -11,6 +11,6 @@ class Comment(models.Model):
 
 	def __unicode__(self):
 		return u'%s' % self.comment
-
+	#making comments appear descending publication date
 	class Meta: 
 		ordering = ['-comment_datetime']

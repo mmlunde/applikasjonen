@@ -1,3 +1,6 @@
+body {
+	background-color: red;
+}
 .signin-form {
 	display: block;
 	margin-left: auto;

@@ -5,7 +5,7 @@
 	{% if user.is_anonymous %}
 	<nav class="navbar navbar-inverse">
 	  <ul class="nav nav-pills">
-		  <li role="presentation" class="active"><a href="{% url 'frontpage' %}">Home</a></li>
+		  <li role="presentation" class="active"><a href="{% url 'frontpage' %}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
 		  <li role="presentation"><a href="{% url 'user_register' %}">Register</a></li>
 		  <li role="presentation"><a href="{% url 'user_login' %}">
 		  	Sign in</a></li>
@@ -16,7 +16,7 @@
 	{% else %}
 	<nav class="navbar navbar-inverse">
 	  <ul class="nav nav-pills">
-		  <li role="presentation" class="active"><a href="{% url 'frontpage' %}">Home</a></li>
+		  <li role="presentation" class="active"><a href="{% url 'frontpage' %}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
 		  <li role="presentation"><a href="{% url 'change_user_info' %}">Account Settings</a></li>
 		  <li role="presentation"><a href="{% url 'user_logout' %}">
 		  	Sign out</a></li>
